@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estaciones del Ferrocarril al Atlántico — El Oasis History &amp; Culture Series</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #e8dfc8;
+    --paper-alt: #ddd2b4;
+    --tide: #2e3d4a;
+    --tide-dark: #22303b;
+    --sepia: #8b6914;
+    --rust: #9c4a2e;
+    --ink: #2a2620;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  header {
+    background: var(--tide);
+    color: var(--paper);
+    padding: 56px 24px 40px;
+    text-align: center;
+  }
+
+  .series-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #c9b98a;
+    margin-bottom: 14px;
+  }
+
+  header h1 {
+    font-weight: 500;
+    font-style: italic;
+    font-size: 44px;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  header h1 span {
+    display: block;
+    font-style: normal;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #b9c4cc;
+    margin-top: 14px;
+    font-weight: 300;
+  }
+
+  .header-rule {
+    width: 90px;
+    height: 1px;
+    background: var(--sepia);
+    margin: 24px auto;
+  }
+
+  .header-sub {
+    max-width: 620px;
+    margin: 0 auto;
+    font-style: italic;
+    color: #cdd6db;
+    font-size: 17px;
+  }
+
+  nav {
+    background: var(--paper-alt);
+    text-align: center;
+    padding: 14px;
+    border-bottom: 1px solid #c7bb98;
+  }
+
+  nav a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tide);
+    text-decoration: none;
+    margin: 0 18px;
+  }
+
+  nav a:hover { color: var(--rust); }
+
+  .intro-band {
+    background: var(--tide-dark);
+    color: #d8dde0;
+    padding: 30px 24px;
+    text-align: center;
+  }
+
+  .intro-band p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+    font-size: 18px;
+  }
+
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 50px 24px 30px;
+  }
+
+  .section-head {
+    text-align: center;
+    margin: 50px 0 30px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .section-head::before, .section-head::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--sepia);
+    opacity: 0.5;
+  }
+
+  .section-head h2 {
+    font-weight: 500;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--tide);
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  .route-note {
+    background: var(--paper-alt);
+    border: 1px solid #c7bb98;
+    border-radius: 3px;
+    padding: 18px 24px;
+    margin-bottom: 40px;
+    font-size: 16px;
+  }
+
+  .route-note strong { color: var(--rust); }
+
+  /* Station cards */
+  .card {
+    background: #f4eedc;
+    border: 1px solid #c7bb98;
+    border-radius: 3px;
+    margin-bottom: 36px;
+    overflow: hidden;
+  }
+
+  .card-body {
+    padding: 28px 32px;
+  }
+
+  .card-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+
+  .card-accession {
+    font-family: 'Josefin Sans', sans-serif;
+    background: var(--sepia);
+    color: var(--paper);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  .card-date {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    color: #6b6354;
+    letter-spacing: 0.04em;
+  }
+
+  .card h3 {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--tide);
+    font-size: 28px;
+    margin: 6px 0 2px;
+  }
+
+  .card .subtitle {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 14px;
+  }
+
+  .hairline {
+    width: 60px;
+    height: 1px;
+    background: var(--sepia);
+    margin-bottom: 16px;
+  }
+
+  .card p { margin: 0 0 14px; }
+
+  .card-data {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 24px;
+    background: var(--paper-alt);
+    border: 1px solid #c7bb98;
+    border-radius: 3px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13.5px;
+  }
+
+  .card-data dt {
+    color: #6b6354;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 11px;
+    margin: 0;
+  }
+
+  .card-data dd {
+    margin: 2px 0 8px;
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+  }
+
+  .source-note {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    color: #8a8270;
+    margin-top: 16px;
+    font-style: italic;
+  }
+
+  /* Full line table */
+  .line-table-wrap {
+    background: #f4eedc;
+    border: 1px solid #c7bb98;
+    border-radius: 3px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+    overflow-x: auto;
+  }
+
+  table.line-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15.5px;
+  }
+
+  table.line-table th {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--tide);
+    padding: 8px 12px;
+    text-align: left;
+  }
+
+  table.line-table td {
+    padding: 6px 12px;
+    border-bottom: 1px solid #d8cca8;
+  }
+
+  table.line-table tr.highlight td {
+    background: #e6d9b3;
+    font-weight: 600;
+    color: var(--rust);
+  }
+
+  table.line-table tr.side-trip td {
+    background: var(--paper-alt);
+    font-style: italic;
+    color: #6b6354;
+  }
+
+  table.line-table tr.side-trip td.num {
+    color: #b3a888;
+  }
+
+  table.line-table tr.side-trip td:first-child {
+    padding-left: 32px;
+  }
+
+  table.line-table tr.side-trip td:first-child::before {
+    content: "↳ ";
+    color: var(--sepia);
+    font-style: normal;
+  }
+
+  table.line-table tr.episode td {
+    background: var(--paper-alt);
+    font-style: italic;
+    color: #6b6354;
+  }
+
+  table.line-table tr.episode td.num {
+    color: #b3a888;
+  }
+
+  table.line-table tr.episode td:first-child {
+    padding-left: 32px;
+  }
+
+  table.line-table tr.episode td:first-child::before {
+    content: "✦ ";
+    color: var(--rust);
+    font-style: normal;
+  }
+
+  table.line-table td.num {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    color: #6b6354;
+  }
+
+  table.line-table td.spoke-cell {
+    text-align: center;
+  }
+
+  table.line-table a.spoke-link {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--sepia);
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  table.line-table a.spoke-link:hover { background: var(--rust); }
+
+  table.line-table span.spoke-pending {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #b3a888;
+    white-space: nowrap;
+  }
+
+  /* Essay */
+  .essay {
+    background: var(--tide);
+    color: #d8dde0;
+    border-radius: 3px;
+    padding: 36px 36px 32px;
+    margin: 50px 0 10px;
+  }
+
+  .essay .eyebrow {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c9b98a;
+    margin-bottom: 10px;
+  }
+
+  .essay h3 {
+    font-style: italic;
+    font-weight: 500;
+    font-size: 24px;
+    margin: 0 0 16px;
+    color: #f0e9d4;
+  }
+
+  .essay p { margin: 0 0 14px; font-size: 16.5px; }
+
+  .essay p:last-child { margin-bottom: 0; }
+
+  footer {
+    background: var(--ink);
+    color: #a89f8b;
+    text-align: center;
+    padding: 30px 24px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+
+  footer strong { color: var(--paper); font-family: 'Cormorant Garamond', serif; font-size: 15px; }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 32px; }
+    .card-data { grid-template-columns: 1fr; }
+    table.line-table { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="series-label">History &amp; Culture &middot; Cartago &amp; Limón Province</div>
+  <h1>Estaciones del Ferrocarril al Atlántico<span>Documentary Supplement &middot; San José &ndash; Limón Line, 1890&ndash;1995</span></h1>
+  <div class="header-rule"></div>
+  <p class="header-sub">A station-by-station record of the Atlantic Railway, compiled to accompany the Turrialba &amp; Juan Viñas and Cartago&ndash;Orosí postcard catalogues</p>
+</header>
+
+<nav>
+  <a href="#linea">The Full Line</a>
+  <a href="#historia">Construction History</a>
+</nav>
+
+<div class="intro-band">
+  <p>Three stops on a single descent — Cartago, Juan Viñas, and Turrialba — anchor a line that once carried coffee from the Central Valley to the Caribbean port of Limón, and the postcards that survive from each town record a railway still at the height of its working life.</p>
+</div>
+
+<main>
+
+  <div class="route-note">
+    <strong>Why this supplement exists:</strong> the Cartago, Juan Viñas, and Turrialba postcards in the collection depict towns that were also numbered stations on the Ferrocarril al Atlántico. This file is the line-wide hub: the full station table below, with a link to each station's own spoke page in the rightmost column, plus a general construction history. Station-specific detail, hazard history, and photographs live on the spoke pages themselves.
+  </div>
+
+  <div class="section-head" id="linea"><h2>The Line — San José to Limón</h2></div>
+
+  <p>At its fullest extent the Ferrocarril al Atlántico carried more than sixty named stations, sidings, and spurs between the two terminals, descending roughly 1,070 metres from the Central Valley to sea level over 165.6 km (103 miles). Distances below are cumulative kilometres and miles measured <em>from Limón</em>, the railway's own convention, as recorded in the FECOSA station archive.</p>
+
+  <div class="line-table-wrap">
+    <table class="line-table">
+      <tr><th>Station</th><th>km from Limón</th><th>Miles</th><th>Province</th><th>Spoke</th></tr>
+      <tr class="highlight"><td>Limón</td><td class="num">0.0</td><td class="num">0</td><td>Limón</td><td class="spoke-cell"><a href="estacion_limon.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="highlight"><td>Moín</td><td class="num">5.7</td><td class="num">4</td><td>Limón</td><td class="spoke-cell"><a href="estacion_moin.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="highlight"><td>Estrada</td><td class="num">33.5</td><td class="num">21</td><td>Limón</td><td class="spoke-cell"><a href="estacion_estrada.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="highlight"><td>Matina</td><td class="num">35.8</td><td class="num">22</td><td>Limón</td><td class="spoke-cell"><a href="estacion_matina.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="highlight"><td>Batán</td><td class="num">41.2</td><td class="num">26</td><td>Limón</td><td class="spoke-cell"><a href="estacion_batan.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="highlight"><td>Pacuarito</td><td class="num">54.7</td><td class="num">34</td><td>Limón</td><td class="spoke-cell"><a href="estacion_pacuarito.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="highlight"><td>Siquirres</td><td class="num">60.0</td><td class="num">37</td><td>Limón</td><td class="spoke-cell"><a href="estacion_siquirres.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="side-trip"><td>Side trip: Guápiles (Línea Vieja)</td><td class="num">—</td><td class="num">—</td><td>Limón</td><td class="spoke-cell"><a href="guapiles_linea_vieja.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="highlight"><td>La Junta</td><td class="num">62.9</td><td class="num">39</td><td>Limón</td><td class="spoke-cell"><a href="estacion_la_junta.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="highlight"><td>Las Lomas</td><td class="num">74.0</td><td class="num">46</td><td>Limón</td><td class="spoke-cell"><a href="estacion_las_lomas.html" class="spoke-link">Visit →</a></td></tr>
+      <tr><td>Bonilla</td><td class="num">83.4</td><td class="num">52</td><td>Limón</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr class="highlight"><td>Peralta</td><td class="num">88.2</td><td class="num">55</td><td>Cartago / Limón</td><td class="spoke-cell"><a href="estacion_peralta.html" class="spoke-link">Visit →</a></td></tr>
+      <tr><td>Torito</td><td class="num">91.8</td><td class="num">57</td><td>Cartago</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td>Jesús María</td><td class="num">95.2</td><td class="num">59</td><td>Cartago</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td>Las Ánimas Azul</td><td class="num">99.2</td><td class="num">62</td><td>Cartago</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr class="highlight"><td>Turrialba</td><td class="num">102.4</td><td class="num">64</td><td>Cartago</td><td class="spoke-cell"><a href="estacion_turrialba.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="highlight"><td>Florencia</td><td class="num">106.4</td><td class="num">66</td><td>Cartago</td><td class="spoke-cell"><a href="estacion_florencia.html" class="spoke-link">Visit →</a></td></tr>
+      <tr><td>Las Pavas</td><td class="num">108.6</td><td class="num">67</td><td>Cartago</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr class="highlight"><td>Tucurrique</td><td class="num">112.7</td><td class="num">70</td><td>Cartago</td><td class="spoke-cell"><a href="estacion_tucurrique.html" class="spoke-link">Visit →</a></td></tr>
+      <tr><td>Murcia (Rossmount)</td><td class="num">113.7</td><td class="num">71</td><td>Cartago</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr class="highlight"><td>Juan Viñas</td><td class="num">120.1</td><td class="num">75</td><td>Cartago</td><td class="spoke-cell"><a href="estacion_juan_vinas.html" class="spoke-link">Visit →</a></td></tr>
+      <tr><td>Quebrada Honda</td><td class="num">122.6</td><td class="num">76</td><td>Cartago</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td>Las Mesas</td><td class="num">124.5</td><td class="num">77</td><td>Cartago</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td>Santiago</td><td class="num">127.1</td><td class="num">79</td><td>Cartago</td><td class="spoke-cell"><a href="santiago_plantacion_cabuya.html" class="spoke-link">Visit →</a></td></tr>
+      <tr><td>El Yas</td><td class="num">131.2</td><td class="num">82</td><td>Cartago</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td>El Rincón</td><td class="num">136.0</td><td class="num">85</td><td>Cartago</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td>Paraíso</td><td class="num">136.6</td><td class="num">85</td><td>Cartago</td><td class="spoke-cell"><a href="estacion_paraiso.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="highlight"><td>Cartago</td><td class="num">145.0</td><td class="num">90</td><td>Cartago</td><td class="spoke-cell"><a href="estacion_cartago.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="side-trip"><td>Side trip: Orosí Valley</td><td class="num">—</td><td class="num">—</td><td>Cartago</td><td class="spoke-cell"><a href="estacion_cartago_orosi.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="episode"><td>1910 Earthquake</td><td class="num">—</td><td class="num">—</td><td>Cartago</td><td class="spoke-cell"><a href="estacion_cartago_1910_earthquake.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="highlight"><td>El Alto (Ochomogo)</td><td class="num">149.5</td><td class="num">93</td><td>Cartago</td><td class="spoke-cell"><a href="estacion_ochomogo.html" class="spoke-link">Visit →</a></td></tr>
+      <tr><td>Yerbabuena</td><td class="num">151.4</td><td class="num">94</td><td>Cartago</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr class="highlight"><td>Tres Ríos</td><td class="num">155.7</td><td class="num">97</td><td>San José</td><td class="spoke-cell"><a href="estacion_tres_rios.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="highlight"><td>Curridabat</td><td class="num">161.0</td><td class="num">100</td><td>San José</td><td class="spoke-cell"><a href="estacion_curridabat.html" class="spoke-link">Visit →</a></td></tr>
+      <tr class="highlight"><td>San José (Estación Atlántico)</td><td class="num">165.6</td><td class="num">103</td><td>San José</td><td class="spoke-cell"><a href="estacion_san_jose.html" class="spoke-link">Visit →</a></td></tr>
+    </table>
+  </div>
+
+  <p style="font-size:14.5px; color:#6b6354; margin-top:-16px;">Several minor sidings, banana-branch spurs (Zent, Imperio–San Alberto, Monteverde–Freeman), and bridge crossings are omitted from this summary table for clarity. A branch from near San José also served Heredia and Alajuela. Source: FECOSA, <em>Estaciones del Ferrocarril del Atlántico</em>. Stations with a dedicated spoke page are linked in the rightmost column; the rest are pending. Rows marked "↳ Side trip" are not numbered line stations — they document a locality reached off the main line. Rows marked "✦" are historical episodes tied to an existing station rather than a separate place — dashes appear in place of distance figures for both row types.</p>
+
+  <div class="essay" id="historia">
+    <div class="eyebrow">Historical Note</div>
+    <h3>Building the Line, 1871–1890</h3>
+    <p>The contract history behind these three stations is tangled even by the standards of nineteenth-century railway finance. Henry Meiggs signed the original 1871 construction contract, then immediately transferred it to his nephew Henry Meiggs Keith — in breach of the contract's own anti-assignment clause — before abandoning Costa Rica abruptly in 1873 amid unresolved questions about how construction funds had been spent. He left the Cartago–Alajuela section complete and in use, which is the section that first brought rail service to Cartago.</p>
+    <p>It fell to his brother, Minor Cooper Keith, to finish the job. Keith assumed the Limón–Siquirres and Siquirres–Angostura contracts in 1879, and the decisive Soto–Keith contract of 1883 finally committed to the Cartago–Limón route that exists today — bypassing an earlier, more difficult proposal to run the line via Carrillo and La Palma over punishing terrain. The first through train from Limón to San José ran in December 1890, nineteen years after the project began.</p>
+    <p>The line was, by contemporary engineering accounts, built quickly and not always well. A government inspection in 1881 catalogued failures ranging from bridge abutments placed directly in riverbeds to rail fastened with half the specified number of rivets — criticism that foreshadowed decades of landslide and washout damage on the Turrialba–La Junta stretch in particular, the section nearest all three of these stations. It is a measure of the railway's importance to the country that, despite this troubled construction record, it remained the principal artery for Costa Rican coffee for over a century.</p>
+  </div>
+
+</main>
+
+<footer>
+  <strong>Estaciones del Ferrocarril al Atlántico</strong> &middot; Cartago &amp; Limón Provinces, Costa Rica<br>
+  Documentary Supplement &middot; El Oasis History &amp; Culture Series
+</footer>
+
+</body>
+</html>
