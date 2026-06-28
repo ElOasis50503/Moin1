@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estación de Cartago — El Oasis History &amp; Culture Series</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #e8dfc8;
+    --paper-alt: #ddd2b4;
+    --tide: #2e3d4a;
+    --tide-dark: #22303b;
+    --sepia: #8b6914;
+    --rust: #9c4a2e;
+    --ink: #2a2620;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  header {
+    background: var(--tide);
+    color: var(--paper);
+    padding: 56px 24px 40px;
+    text-align: center;
+  }
+
+  .series-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #c9b98a;
+    margin-bottom: 14px;
+  }
+
+  header h1 {
+    font-weight: 500;
+    font-style: italic;
+    font-size: 44px;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  header h1 span {
+    display: block;
+    font-style: normal;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #b9c4cc;
+    margin-top: 14px;
+    font-weight: 300;
+  }
+
+  .header-rule {
+    width: 90px;
+    height: 1px;
+    background: var(--sepia);
+    margin: 24px auto;
+  }
+
+  .header-sub {
+    max-width: 620px;
+    margin: 0 auto;
+    font-style: italic;
+    color: #cdd6db;
+    font-size: 17px;
+  }
+
+  nav {
+    background: var(--paper-alt);
+    text-align: center;
+    padding: 14px;
+    border-bottom: 1px solid #c7bb98;
+  }
+
+  nav a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tide);
+    text-decoration: none;
+    margin: 0 18px;
+  }
+
+  nav a:hover { color: var(--rust); }
+
+  .intro-band {
+    background: var(--tide-dark);
+    color: #d8dde0;
+    padding: 30px 24px;
+    text-align: center;
+  }
+
+  .intro-band p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+    font-size: 18px;
+  }
+
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 50px 24px 30px;
+  }
+
+  .section-head {
+    text-align: center;
+    margin: 50px 0 30px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .section-head::before, .section-head::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--sepia);
+    opacity: 0.5;
+  }
+
+  .section-head h2 {
+    font-weight: 500;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--tide);
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  .route-note {
+    background: var(--paper-alt);
+    border: 1px solid #c7bb98;
+    border-radius: 3px;
+    padding: 18px 24px;
+    margin-bottom: 40px;
+    font-size: 16px;
+  }
+
+  .route-note strong { color: var(--rust); }
+
+  .station-data-strip {
+    display: flex;
+    justify-content: center;
+    gap: 36px;
+    flex-wrap: wrap;
+    background: var(--paper-alt);
+    border: 1px solid #c7bb98;
+    border-radius: 3px;
+    padding: 20px 24px;
+    margin-bottom: 44px;
+  }
+
+  .station-data-strip div {
+    text-align: center;
+  }
+
+  .station-data-strip dt {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b6354;
+    margin-bottom: 4px;
+  }
+
+  .station-data-strip dd {
+    margin: 0;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--tide);
+  }
+
+  /* Plate cards */
+  .card {
+    background: #f4eedc;
+    border: 1px solid #c7bb98;
+    border-radius: 3px;
+    margin-bottom: 36px;
+    overflow: hidden;
+  }
+
+  .card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: zoom-in;
+  }
+
+  .card-body {
+    padding: 28px 32px;
+  }
+
+  .card-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+
+  .card-accession {
+    font-family: 'Josefin Sans', sans-serif;
+    background: var(--sepia);
+    color: var(--paper);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  .card-date {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    color: #6b6354;
+    letter-spacing: 0.04em;
+  }
+
+  .card h3 {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--tide);
+    font-size: 28px;
+    margin: 6px 0 2px;
+  }
+
+  .subtitle {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #6b6354;
+    margin-bottom: 14px;
+  }
+
+  .hairline {
+    height: 1px;
+    background: #c7bb98;
+    margin: 14px 0 18px;
+  }
+
+  .card p { margin: 0 0 14px; font-size: 17px; }
+
+  .card-data {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 6px 18px;
+    background: var(--paper-alt);
+    border-radius: 3px;
+    padding: 16px 20px;
+    margin-top: 18px;
+    font-size: 15.5px;
+  }
+
+  .card-data dt {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--rust);
+    align-self: start;
+    padding-top: 1px;
+  }
+
+  .card-data dd { margin: 0; }
+
+  .source-note {
+    margin-top: 18px;
+    font-size: 13.5px;
+    color: #6b6354;
+    font-style: italic;
+  }
+
+  .original-caption {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    background: var(--paper-alt);
+    border-left: 3px solid var(--sepia);
+    padding: 8px 14px;
+    margin: 0 0 16px;
+    display: inline-block;
+  }
+
+  .essay {
+    background: var(--tide-dark);
+    color: #d8dde0;
+    border-radius: 4px;
+    padding: 36px 40px;
+    margin: 50px 0;
+  }
+
+  .essay h2 {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--paper);
+    font-size: 24px;
+    margin-top: 0;
+  }
+
+  .essay p { font-size: 17px; margin-bottom: 14px; }
+  .essay p:last-child { margin-bottom: 0; }
+
+  .no-plates-note {
+    text-align: center;
+    font-style: italic;
+    color: #6b6354;
+    padding: 30px 24px;
+    border: 1px dashed #c7bb98;
+    border-radius: 3px;
+    margin-bottom: 40px;
+  }
+
+  footer {
+    background: var(--tide-dark);
+    color: #aab5bc;
+    text-align: center;
+    padding: 30px 24px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+  }
+
+  footer a { color: #c9b98a; text-decoration: none; }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 18, 14, 0.92);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    cursor: zoom-out;
+  }
+
+  .lightbox.active { display: flex; }
+
+  .lightbox img {
+    max-width: 100%;
+    max-height: 92vh;
+    border: 4px solid var(--paper);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 32px; }
+    .card-body { padding: 22px 20px; }
+    .station-data-strip { gap: 20px; padding: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="series-label">History &amp; Culture · Ferrocarril al Atlántico · Mile 90</div>
+  <h1>Estación de Cartago<span>Cartago Province · 145.0 km / 90 miles from Limón</span></h1>
+  <div class="header-rule"></div>
+  <p class="header-sub">A station spoke of the Atlantic Railway documentary supplement</p>
+</header>
+
+<nav>
+  <a href="ferrocarril_atlantico_estaciones.html">↩ The Full Line</a>
+  <a href="#historia">History</a>
+</nav>
+
+<div class="intro-band">
+  <p>Mile 90 on the descent from San José — the railway's first terminus, reached seventeen years before the line was finished to Limón.</p>
+</div>
+
+<main>
+
+  <div class="route-note">
+    <strong>About this spoke:</strong> Cartago is one of three stations on the Ferrocarril al Atlántico — alongside Juan Viñas and Turrialba — documented in detail as part of this supplement. This page is a placeholder spoke: the station history below is carried over from the main line hub, and plates (postcards, photographs) will be added here as they're identified in the collection.
+  </div>
+
+  <div class="station-data-strip">
+    <div><dt>Distance from Limón</dt><dd>145.0 km / 90 miles</dd></div>
+    <div><dt>Opened</dt><dd>1873</dd></div>
+    <div><dt>Approach feature</dt><dd>Puente del Fierro</dd></div>
+    <div><dt>Province</dt><dd>Cartago</dd></div>
+  </div>
+
+  <!-- ============================================================
+       PLATE CARDS GO HERE.
+       To add a new plate, paste a new <div class="card"> block
+       (see estacion_juan_vinas.html for the full pattern) directly
+       below this comment, and remove .no-plates-note once at least
+       one card is present.
+       ============================================================ -->
+
+  <div class="no-plates-note">No plates catalogued yet for this spoke. Postcards and photographs of the Cartago station will be added here as they are identified in the collection.</div>
+
+  <div class="essay" id="historia">
+    <h2>Estación de Cartago</h2>
+    <p>Cartago was the railway's first major terminus, reached when the Cartago–Alajuela segment opened in 1873 under the original Meiggs–Keith contract — seventeen years before the line was extended all the way to the Caribbean. The station building is a simple single-storey wooden structure with three rooms, built in the early twentieth century; the surviving terminal building and the adjoining right-of-way are what remain of what was once a much larger station yard, most of which has since been built over.</p>
+    <p>The approach to Cartago from the San José side descends through El Alto (Ochomogo) and crosses the Puente del Fierro (Iron Bridge) just before reaching the station — a crossing still referenced in modern photographs of the revived Interurbano tourist service, which uses twin-unit "Apolo" railcars on this same route today.</p>
+    <p style="margin-top:18px; font-size:14.5px; color:#aab5bc; font-style:italic;">Sources: FECOSA station archive; "Nuevo servicio a Cartago" (FECOSA); Mi Costa Rica de Antaño.</p>
+  </div>
+
+</main>
+
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<footer>
+  El Oasis History &amp; Culture Series · Costa Rica Histórica · Estación de Cartago<br>
+  <a href="ferrocarril_atlantico_estaciones.html">Return to the Full Line</a>
+</footer>
+
+<script>
+  document.querySelectorAll('.card img').forEach(img => {
+    img.addEventListener('click', () => {
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-img').alt = img.alt;
+      document.getElementById('lightbox').classList.add('active');
+    });
+  });
+  document.getElementById('lightbox').addEventListener('click', () => {
+    document.getElementById('lightbox').classList.remove('active');
+  });
+</script>
+
+</body>
+</html>
